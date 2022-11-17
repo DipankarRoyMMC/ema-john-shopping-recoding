@@ -6,8 +6,10 @@ const Cart = (props) => {
 
     let total = 0;
     let shipping = 0;
+    let quentity = 0;
     for (const product of cart) {
-        total = total + product.price;
+        quentity = quentity + product.quentity;
+        total = total + product.price * product.quentity;
         shipping = shipping + product.shipping;
     }
     const tax = parseFloat((total * .10).toFixed(2));
@@ -16,7 +18,7 @@ const Cart = (props) => {
     return (
         <div className="cart">
             <h1>From Cart</h1>
-            <h3>Order Summary: {cart.length}</h3>
+            <h3>Order Summary: {quentity}</h3>
             <p><strong>Total Price: ${total} </strong></p>
             <p><strong>Shipping: ${shipping}</strong></p>
             <p><strong>Tax: ${tax}</strong></p>
